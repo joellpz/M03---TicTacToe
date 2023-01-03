@@ -4,11 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d9b7da1f-a24d-4b68-bfa4-cfd5d39594bf" name="Changes" comment="Empezamos">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/view/mainwindow.fxml" afterDir="false" />
+    <list default="true" id="d9b7da1f-a24d-4b68-bfa4-cfd5d39594bf" name="Changes" comment="//TO DO boton About us&#10;//TO DO FUNCIONAR TRES EN RAYA&#10;//TO DO IA To Play">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/TicTacToeApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/TicTacToeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/tictactoe/mainwindow.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/tictactoe/puiglogo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/view/mainwindow.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +28,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -37,16 +47,39 @@
     </option>
   </component>
   <component name="ProjectId" id="2JVBb3xAxDhRJNTDLUnuKjsgOfE" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/Joel/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Scene Builder/SceneBuilder.lnk",
-    "project.structure.last.edited": "Facets",
+    "last_opened_file_path": "D:/Programas/Scene Builder/SceneBuilder.exe",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.JavaFX"
+    "settings.editor.selected.configurable": "preferences.keymap"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Joel\IdeaProjects\M03-UF5-TicTacToe\src\main\resources\com\example\tictactoe" />
+      <recent name="C:\Users\Joel\IdeaProjects\M03-UF5-TicTacToe\src\main\java\com\example\tictactoe\view" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="TicTacToe" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.example.tictactoe.TicTacToeApplication" />
+      <module name="TicTacToe" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task id="LOCAL-00001" summary="Empezamos">
       <created>1672154667652</created>
@@ -54,6 +87,13 @@
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
       <updated>1672154667652</updated>
+    </task>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d9b7da1f-a24d-4b68-bfa4-cfd5d39594bf" name="Changes" comment="Empezamos" />
+      <created>1672231625995</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1672231625995</updated>
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -71,7 +111,19 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Empezamos" />
-    <option name="LAST_COMMIT_MESSAGE" value="Empezamos" />
+    <MESSAGE value="//TO DO boton About us&#10;//TO DO FUNCIONAR TRES EN RAYA&#10;//TO DO IA To Play" />
+    <option name="LAST_COMMIT_MESSAGE" value="//TO DO boton About us&#10;//TO DO FUNCIONAR TRES EN RAYA&#10;//TO DO IA To Play" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/tictactoe/TicTacToeController.java</url>
+          <line>108</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
