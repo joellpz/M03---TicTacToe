@@ -23,7 +23,7 @@ public class TicTacToeApplication extends Application {
 //TO DO boton About us
 //TO DO FUNCIONAR TRES EN RAYA
 //TO DO IA To Play
-//TODO STATS
+//TO DO STATS Guardadas
 //TODO CSV O XML CON STATS PARA CARGARLAS EN LA TABLA
 //TODO Cambio de CSS en directo
 //TODO

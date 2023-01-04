@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="391.0" maxWidth="619.0" minHeight="391.0" minWidth="619.0" prefHeight="391.0" prefWidth="619.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tictactoe.TicTacToeController">
+<AnchorPane maxHeight="391.0" maxWidth="619.0" minHeight="391.0" minWidth="619.0" prefHeight="391.0" prefWidth="619.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tictactoe.controller.TicTacToeController">
    <children>
       <MenuBar prefHeight="25.0" prefWidth="619.0">
          <menus>
@@ -48,7 +48,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
          <children>
-            <Button id="C7C7C7C7" fx:id="cell00" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#onClickCell" opacity="0.5" prefHeight="100.0" prefWidth="100.0" stylesheets="@../../../style.css" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Button id="C7C7C7C7" fx:id="cell00" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#onClickCell" opacity="0.5" prefHeight="100.0" prefWidth="100.0" stylesheets="@style.css" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
@@ -59,7 +59,7 @@
                   <Font size="40.0" />
                </font>
             </Button>
-            <Button id="C7C7C7C7" fx:id="cell01" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#onClickCell" opacity="0.5" prefHeight="100.0" prefWidth="100.0" stylesheets="@../../../style.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Button id="C7C7C7C7" fx:id="cell01" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#onClickCell" opacity="0.5" prefHeight="100.0" prefWidth="100.0" stylesheets="@style.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <cursor>
                   <Cursor fx:constant="DISAPPEAR" />
                </cursor>
@@ -67,7 +67,7 @@
                   <Font size="40.0" />
                </font>
             </Button>
-            <Button id="C7C7C7C7" fx:id="cell02" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#onClickCell" opacity="0.5" prefHeight="100.0" prefWidth="100.0" stylesheets="@../../../style.css" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Button id="C7C7C7C7" fx:id="cell02" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#onClickCell" opacity="0.5" prefHeight="100.0" prefWidth="100.0" stylesheets="@style.css" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <cursor>
                   <Cursor fx:constant="DISAPPEAR" />
                </cursor>
@@ -75,7 +75,7 @@
                   <Font size="40.0" />
                </font>
             </Button>
-            <Button id="C7C7C7C7" fx:id="cell10" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#onClickCell" opacity="0.5" prefHeight="100.0" prefWidth="100.0" stylesheets="@../../../style.css" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Button id="C7C7C7C7" fx:id="cell10" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#onClickCell" opacity="0.5" prefHeight="100.0" prefWidth="100.0" stylesheets="@style.css" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <cursor>
                   <Cursor fx:constant="DISAPPEAR" />
                </cursor>
@@ -83,7 +83,7 @@
                   <Font size="40.0" />
                </font>
             </Button>
-            <Button id="C7C7C7C7" fx:id="cell11" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#onClickCell" opacity="0.5" prefHeight="100.0" prefWidth="100.0" stylesheets="@../../../style.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Button id="C7C7C7C7" fx:id="cell11" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#onClickCell" opacity="0.5" prefHeight="100.0" prefWidth="100.0" stylesheets="@style.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <cursor>
                   <Cursor fx:constant="DISAPPEAR" />
                </cursor>
@@ -91,7 +91,7 @@
                   <Font size="40.0" />
                </font>
             </Button>
-            <Button id="C7C7C7C7" fx:id="cell12" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#onClickCell" opacity="0.5" prefHeight="100.0" prefWidth="100.0" stylesheets="@../../../style.css" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Button id="C7C7C7C7" fx:id="cell12" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#onClickCell" opacity="0.5" prefHeight="100.0" prefWidth="100.0" stylesheets="@style.css" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <cursor>
                   <Cursor fx:constant="DISAPPEAR" />
                </cursor>
@@ -99,7 +99,7 @@
                   <Font size="40.0" />
                </font>
             </Button>
-            <Button id="C7C7C7C7" fx:id="cell20" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#onClickCell" opacity="0.5" prefHeight="100.0" prefWidth="100.0" stylesheets="@../../../style.css" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <Button id="C7C7C7C7" fx:id="cell20" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#onClickCell" opacity="0.5" prefHeight="100.0" prefWidth="100.0" stylesheets="@style.css" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <cursor>
                   <Cursor fx:constant="DISAPPEAR" />
                </cursor>
@@ -107,7 +107,7 @@
                   <Font size="40.0" />
                </font>
             </Button>
-            <Button id="C7C7C7C7" fx:id="cell21" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#onClickCell" opacity="0.5" prefHeight="100.0" prefWidth="100.0" stylesheets="@../../../style.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <Button id="C7C7C7C7" fx:id="cell21" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#onClickCell" opacity="0.5" prefHeight="100.0" prefWidth="100.0" stylesheets="@style.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <cursor>
                   <Cursor fx:constant="DISAPPEAR" />
                </cursor>
@@ -115,7 +115,7 @@
                   <Font size="40.0" />
                </font>
             </Button>
-            <Button id="C7C7C7C7" fx:id="cell22" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#onClickCell" opacity="0.5" prefHeight="100.0" prefWidth="100.0" stylesheets="@../../../style.css" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <Button id="C7C7C7C7" fx:id="cell22" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#onClickCell" opacity="0.5" prefHeight="100.0" prefWidth="100.0" stylesheets="@style.css" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <cursor>
                   <Cursor fx:constant="DISAPPEAR" />
                </cursor>

@@ -1,7 +1,7 @@
-package com.example.tictactoe;
+package com.example.tictactoe.controller;
 
-import com.opencsv.CSVReader;
-import com.opencsv.CSVWriter;
+import com.example.tictactoe.model.OpenCSV;
+import com.example.tictactoe.model.Stats;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -17,20 +17,15 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
-
-import org.jetbrains.annotations.NotNull;
+import static com.example.tictactoe.controller.StatsController.statsList;
 
 public class TicTacToeController {
+
+
+    boolean firstMatch = true;
 
     String turn = "";
     String winnerPlayer;
@@ -46,12 +41,23 @@ public class TicTacToeController {
     @FXML
     Text playerTurnText;
     @FXML
-    Text winnerText;
-    @FXML
     ToggleGroup gameModeGroup;
 
     @FXML
     protected void onClickStartBtn() {
+        //Reads the stats file to have it updated
+        if (firstMatch) {
+            firstMatch = false;
+
+            List<String[]> listStatsReaded;
+            try {
+                listStatsReaded = OpenCSV.readCSV("src/main/resources/data/stats.csv");
+                listStatsReaded.forEach(strings -> statsList.put(strings[0], new Stats(strings[0], Integer.parseInt(strings[1]), Integer.parseInt(strings[2]), Integer.parseInt(strings[3]))));
+            } catch (IOException e) {
+                System.out.println("None Stats");
+            }
+        }
+
         RadioButton gameMenuButton = (RadioButton) gameModeGroup.getSelectedToggle();
         IA = 0;
         turnIA = true;
@@ -126,25 +132,25 @@ public class TicTacToeController {
         turnIA = false;
 
         do {
-        clicked = false;
-        randomBtnClick = (int) (Math.random() * 9);
-        System.out.println("INICIO TIRADA");
-        System.out.println(randomBtnClick);
-        System.out.println("IA :"+IA);
-        System.out.println("TUNR IA:"+turnIA);
-        System.out.println("--------");
+            clicked = false;
+            randomBtnClick = (int) (Math.random() * 9);
+            System.out.println("INICIO TIRADA");
+            System.out.println(randomBtnClick);
+            System.out.println("IA :" + IA);
+            System.out.println("TUNR IA:" + turnIA);
+            System.out.println("--------");
 
-        Button btnCell = (Button) nodes.get(randomBtnClick);
-        System.out.println(btnCell.getId());
-        System.out.println(btnCell.isDisabled());
-        System.out.println(btnCell.isDisable());
-        if (!btnCell.isDisabled()) {
-            System.out.println("Click");
-            btnCell.fire();
-        } else {
-            System.out.println("Falso");
-            clicked = true;
-        }
+            Button btnCell = (Button) nodes.get(randomBtnClick);
+            System.out.println(btnCell.getId());
+            System.out.println(btnCell.isDisabled());
+            System.out.println(btnCell.isDisable());
+            if (!btnCell.isDisabled()) {
+                System.out.println("Click");
+                btnCell.fire();
+            } else {
+                System.out.println("Falso");
+                clicked = true;
+            }
 
         } while (clicked);
         //Randomize the position
@@ -248,6 +254,22 @@ public class TicTacToeController {
         //Buttons to Send Form.
         Button submitBtn = new Button("Submit");
         submitBtn.setPrefWidth(60);
+        submitBtn.onActionProperty().set(e -> {
+            System.out.println(playerXName.getText().trim());
+            System.out.println(playerOLabel.getText().trim());
+            System.out.println("_________________________");
+            if (player.equals("X")) {
+                submitStats(playerXName.getText().trim(), "win");
+                submitStats(playerOName.getText().trim(), "lose");
+            } else if (player.equals("O")) {
+                submitStats(playerXName.getText().trim(), "lose");
+                submitStats(playerOName.getText().trim(), "win");
+            } else {
+                submitStats(playerXName.getText().trim(), "tie");
+                submitStats(playerOName.getText().trim(), "tie");
+            }
+            winnerStage.close();
+        });
         Button cancelBtn = new Button("Cancel");
         cancelBtn.onActionProperty().set(e -> winnerStage.close());
         cancelBtn.setPrefWidth(60);
@@ -256,6 +278,13 @@ public class TicTacToeController {
         buttonsBox.setPadding(indvPadding);
         buttonsBox.setAlignment(Pos.CENTER_RIGHT);
 
+        if (IA >= 1) {
+            playerOName.setDisable(true);
+            if (IA == 2) {
+                playerXName.setDisable(true);
+                submitBtn.setDisable(true);
+            }
+        }
 
         VBox vBox = new VBox(hBox, hBox1, hBox2, buttonsBox);
         Scene scene = new Scene(vBox);
@@ -273,28 +302,39 @@ public class TicTacToeController {
         restartTable("none");
     }
 
+    @FXML
     protected void submitStats(String playerName, String stat) {
-    }
-
-    public static List<String[]> readCSV(@NotNull String path) {
-        try (Reader reader = Files.newBufferedReader(Path.of("data/CSV/" + path))) {
-            try (CSVReader csvReader = new CSVReader(reader)) {
-                return csvReader.readAll();
+        if (!Objects.equals(playerName, "")) {
+            if (statsList.get(playerName) != null) {
+                switch (stat) {
+                    case "win" -> statsList.get(playerName).plusWin();
+                    case "lose" -> statsList.get(playerName).plusLoses();
+                    case "tie" -> statsList.get(playerName).plusTied();
+                }
+            } else {
+                switch (stat) {
+                    case "win" -> statsList.put(playerName, new Stats(playerName, 1, 0, 0));
+                    case "lose" -> statsList.put(playerName, new Stats(playerName, 0, 1, 0));
+                    case "tie" -> statsList.put(playerName, new Stats(playerName, 0, 0, 1));
+                }
+            }
+            ArrayList<String[]> list = new ArrayList<>();
+            for (Stats stats : statsList.values()) {
+                String[] statsPlayer = new String[4];
+                statsPlayer[0] = stats.getName();
+                statsPlayer[1] = stats.getWins() + "";
+                statsPlayer[2] = stats.getLoses() + "";
+                statsPlayer[3] = stats.getTied() + "";
+                list.add(statsPlayer);
+            }
+            try {
+                OpenCSV.writeToCSV(list, "src/main/resources/data/stats.csv");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        } else System.out.println("None Name");
     }
 
-    public static void writeToCSV(ArrayList<String[]> list, @NotNull String path) throws IOException {
-        CSVWriter writer = new CSVWriter(new FileWriter("data/CSV/" + path));
-        //writer.writeNext();
-        writer.writeAll(list);
-        System.out.println("********Import Finished*****+");
-        writer.close();
-    }
 
     @FXML
     protected void onClickCell(ActionEvent event) {
@@ -306,7 +346,7 @@ public class TicTacToeController {
         if (winnerPlayer != null) {
             winnerStage(winnerPlayer);
             playerTurnText.setText("Next Game...");
-        }else changePlayer();
+        } else changePlayer();
     }
 
     /**
