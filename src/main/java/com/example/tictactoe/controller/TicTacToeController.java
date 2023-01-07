@@ -1,5 +1,6 @@
 package com.example.tictactoe.controller;
 
+import com.example.tictactoe.TicTacToeApplication;
 import com.example.tictactoe.model.OpenCSV;
 import com.example.tictactoe.model.Stats;
 import javafx.event.ActionEvent;
@@ -23,14 +24,10 @@ import java.util.*;
 import static com.example.tictactoe.controller.StatsController.statsList;
 
 public class TicTacToeController {
-
-
     boolean firstMatch = true;
-
     String turn = "";
     String winnerPlayer;
     boolean winner = false;
-
     int IA = 0;
     boolean turnIA;
     String[][] playingTableString;
@@ -45,6 +42,7 @@ public class TicTacToeController {
 
     @FXML
     protected void onClickStartBtn() {
+        System.out.println(playingTable);
         //Reads the stats file to have it updated
         if (firstMatch) {
             firstMatch = false;
@@ -77,7 +75,6 @@ public class TicTacToeController {
                     IA = 2;
                     moveIA();
                 }
-
                 case "plavscomp" -> IA = 1;
             }
         }
@@ -373,5 +370,29 @@ public class TicTacToeController {
         stage.setScene(scene);
         stage.setTitle("About");
         stage.show();
+    }
+
+    @FXML
+    protected void onClickStatsBtn() {
+        try {
+            TicTacToeApplication.replaceSceneContent("stats-window.fxml");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    String theme = "light";
+    @FXML
+    protected void onClickChangeThemeBtn() {
+        if (theme.equals("light")) {
+            System.out.println("DARK");
+            btnStart.getScene().getStylesheets().set(0, TicTacToeApplication.class.getResource("style_dark.css").toExternalForm());
+            theme = "dark";
+        }
+        else {
+            System.out.println("LIGHT");
+            theme = "light";
+            btnStart.getScene().getStylesheets().set(0, TicTacToeApplication.class.getResource("style_light.css").toExternalForm());
+        }
     }
 }
