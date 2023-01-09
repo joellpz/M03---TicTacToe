@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d9b7da1f-a24d-4b68-bfa4-cfd5d39594bf" name="Changes" comment="//TO DO CSV O XML CON STATS PARA CARGARLAS EN LA TABLA" />
+    <list default="true" id="d9b7da1f-a24d-4b68-bfa4-cfd5d39594bf" name="Changes" comment="//TO DO CSV O XML CON STATS PARA CARGARLAS EN LA TABLA">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/controller/TicTacToeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/controller/TicTacToeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/stats.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/stats.csv" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,7 +52,7 @@
     &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -147,17 +151,6 @@
     <MESSAGE value="//TO DO Cambio de CSS en directo" />
     <MESSAGE value="//TO DO CSV O XML CON STATS PARA CARGARLAS EN LA TABLA" />
     <option name="LAST_COMMIT_MESSAGE" value="//TO DO CSV O XML CON STATS PARA CARGARLAS EN LA TABLA" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/tictactoe/controller/TicTacToeController.java</url>
-          <line>328</line>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

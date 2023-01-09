@@ -27,7 +27,6 @@ import java.util.*;
 import static com.example.tictactoe.controller.StatsController.statsList;
 
 public class TicTacToeController implements Initializable {
-    String theme = "light";
     String turn = "";
     String winnerPlayer;
     boolean winner = false;
@@ -139,12 +138,10 @@ public class TicTacToeController implements Initializable {
      */
     @FXML
     protected void onClickChangeThemeBtn() {
-        if (theme.equals("light")) {
+        if (btnStart.getScene().getStylesheets().get(0).contains("light")) {
             btnStart.getScene().getStylesheets().set(0, Objects.requireNonNull(TicTacToeApplication.class.getResource("style_dark.css")).toExternalForm());
-            theme = "dark";
         }
         else {
-            theme = "light";
             btnStart.getScene().getStylesheets().set(0, Objects.requireNonNull(TicTacToeApplication.class.getResource("style_light.css")).toExternalForm());
         }
     }
