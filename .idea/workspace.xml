@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d9b7da1f-a24d-4b68-bfa4-cfd5d39594bf" name="Changes" comment="//TODO STATS Guardadas en stats.csv">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/tictactoe/dia.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/tictactoe/noche.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/tictactoe/stats-window.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/tictactoe/style_light.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/TicTacToeApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/TicTacToeApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/controller/StatsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/controller/StatsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/controller/TicTacToeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/controller/TicTacToeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/tictactoe/mainwindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/tictactoe/main-window.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/tictactoe/statsGrid.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/tictactoe/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/tictactoe/style_dark.css" afterDir="false" />
-    </list>
+    <list default="true" id="d9b7da1f-a24d-4b68-bfa4-cfd5d39594bf" name="Changes" comment="//TO DO Cambio de CSS en directo" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -114,7 +102,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672849474438</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="//TO DO Cambio de CSS en directo">
+      <created>1673121711069</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1673121711069</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -135,7 +130,8 @@
     <MESSAGE value="Empezamos" />
     <MESSAGE value="//TO DO boton About us&#10;//TO DO FUNCIONAR TRES EN RAYA&#10;//TO DO IA To Play" />
     <MESSAGE value="//TODO STATS Guardadas en stats.csv" />
-    <option name="LAST_COMMIT_MESSAGE" value="//TODO STATS Guardadas en stats.csv" />
+    <MESSAGE value="//TO DO Cambio de CSS en directo" />
+    <option name="LAST_COMMIT_MESSAGE" value="//TO DO Cambio de CSS en directo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
