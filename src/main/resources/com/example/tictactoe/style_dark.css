@@ -4,7 +4,7 @@
     -fx-background-radius: 8;
     -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
     -fx-font-weight: bold;
-    -fx-font-size: 1.3em;
+    -fx-font-size: 2em;
     -fx-background-color: #8C8C8C50;
 }
 #cellBtn:hover {
