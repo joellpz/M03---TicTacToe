@@ -1,53 +1,60 @@
 package com.example.tictactoe.controller;
 
 import com.example.tictactoe.TicTacToeApplication;
+import com.example.tictactoe.model.OpenCSV;
 import com.example.tictactoe.model.Stats;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.fxml.Initializable;
+import javafx.geometry.HPos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
 
+import java.io.IOException;
+import java.net.URL;
 import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
+import java.util.ResourceBundle;
 
-public class StatsController {
-    @FXML
-    GridPane gridOfStats;
-    @FXML
-    GridPane playingTable;
-    protected static Map<String, Stats> statsList = new HashMap<>();
+import static javafx.scene.layout.GridPane.*;
 
+public class StatsController implements Initializable {
+    @FXML
+    GridPane statsGrid;
+    protected static HashMap<String, Stats> statsList = new HashMap<>();
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        gridConstructor();
+    }
+
+    /**
+     * Gets the Stats information and sets the values into the Grid
+     */
     @FXML
     public void gridConstructor() {
-        System.out.println("Grid Contructor");
         int rows = 1;
-        System.out.println(gridOfStats);
-        System.out.println(playingTable);
-
-        for (Node node : gridOfStats.getChildren()) {
-            Label btnCell = (Label) node;
-            System.out.println(btnCell.getText());
-            System.out.println("aaaaaaaa");
-
-        }
-        /*for (Stats stat : statsList.values()) {
+        for (Stats stat : statsList.values()) {
             Label name = new Label(stat.getName());
-            Label win = new Label(stat.getWins() + "");
+            Label wins = new Label(stat.getWins() + "");
             Label loses = new Label(stat.getLoses() + "");
             Label tied = new Label(stat.getTied() + "");
 
-            this.statsGrid.add(name, 0, rows);
-            this.statsGrid.add(win, 1, rows);
-            this.statsGrid.add(loses, 2, rows);
-            this.statsGrid.add(tied, 3, rows);
+            statsGrid.add(name, 0, rows);
+            statsGrid.add(wins, 1, rows);
+            statsGrid.add(loses, 2, rows);
+            statsGrid.add(tied, 3, rows);
+
+            setHalignment(name, HPos.CENTER);
+            setHalignment(wins, HPos.CENTER);
+            setHalignment(loses, HPos.CENTER);
+            setHalignment(tied, HPos.CENTER);
             rows++;
-        }*/
+        }
     }
 
+    /**
+     * Go back Button.
+     */
     @FXML
     protected void onClickBackBtn() {
         try {
@@ -57,5 +64,17 @@ public class StatsController {
         }
     }
 
+    /**
+     * Reads Stats from the file
+     */
+    protected static void readStats() {
+        List<String[]> listStatsReaded;
+        try {
+            listStatsReaded = OpenCSV.readCSV("src/main/resources/data/stats.csv");
+            listStatsReaded.forEach(strings -> statsList.put(strings[0], new Stats(strings[0], Integer.parseInt(strings[1]), Integer.parseInt(strings[2]), Integer.parseInt(strings[3]))));
+        } catch (IOException e) {
+            System.out.println("None Stats");
+        }
+    }
 
 }

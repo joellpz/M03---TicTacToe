@@ -5,6 +5,7 @@ import com.example.tictactoe.model.OpenCSV;
 import com.example.tictactoe.model.Stats;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -17,14 +18,16 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.*;
 
 import static com.example.tictactoe.controller.StatsController.statsList;
 
-public class TicTacToeController {
-    boolean firstMatch = true;
+public class TicTacToeController implements Initializable {
+    String theme = "light";
     String turn = "";
     String winnerPlayer;
     boolean winner = false;
@@ -40,22 +43,18 @@ public class TicTacToeController {
     @FXML
     ToggleGroup gameModeGroup;
 
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        StatsController.readStats();
+    }
+
+    /**
+     * On Click the Start Button Sequence.
+     */
     @FXML
     protected void onClickStartBtn() {
-        System.out.println(playingTable);
         //Reads the stats file to have it updated
-        if (firstMatch) {
-            firstMatch = false;
-
-            List<String[]> listStatsReaded;
-            try {
-                listStatsReaded = OpenCSV.readCSV("src/main/resources/data/stats.csv");
-                listStatsReaded.forEach(strings -> statsList.put(strings[0], new Stats(strings[0], Integer.parseInt(strings[1]), Integer.parseInt(strings[2]), Integer.parseInt(strings[3]))));
-            } catch (IOException e) {
-                System.out.println("None Stats");
-            }
-        }
-
         RadioButton gameMenuButton = (RadioButton) gameModeGroup.getSelectedToggle();
         IA = 0;
         turnIA = true;
@@ -65,6 +64,7 @@ public class TicTacToeController {
             playerTurnText.setStyle("-fx-fill: red;");
         } else {
             restartTable("first");
+
             playingTableString = new String[playingTable.getColumnCount()][playingTable.getRowCount()];
             turn = "X";
             btnStart.setDisable(true);
@@ -80,6 +80,79 @@ public class TicTacToeController {
         }
     }
 
+    /**
+     * When click a Grid Cell it active the sequence to change the state.
+     * @param event Source of the event
+     */
+    @FXML
+    protected void onClickCell(@NotNull ActionEvent event) {
+        Button btn = (Button) event.getSource();
+        btn.setText(turn);
+        btn.setDisable(true);
+        updateTablero();
+        winnerPlayer = checkWin();
+        if (winnerPlayer != null) {
+            winnerStage(winnerPlayer);
+            playerTurnText.setText("Next Game...");
+        } else changePlayer();
+    }
+    /**
+     * Crea la pantalla de información sobre el programa en el menú superior dentro de Help.
+     */
+    @FXML
+    protected void onClickAboutBtnMenu() {
+        Stage stage = new Stage();
+        Label label = new Label("""
+                This is a Project of JavaFX for the class of M03.\s
+                - INS Puig Castellar -
+
+                 * Developed by Joel López *
+                \s""");
+        label.setTextAlignment(TextAlignment.CENTER);
+        ImageView imageView = new ImageView("https://elpuig.xeill.net/logo.png");
+        imageView.setPreserveRatio(true);
+        imageView.setFitWidth(250);
+
+        VBox vBox = new VBox(label, imageView);
+        vBox.setAlignment(Pos.CENTER);
+        vBox.setPadding(new Insets(10, 20, 20, 20));
+        Scene scene = new Scene(vBox);
+        stage.setScene(scene);
+        stage.setTitle("About");
+        stage.show();
+    }
+
+    /**
+     * Change the Scene into the Stats Grid.
+     */
+    @FXML
+    protected void onClickStatsBtn() {
+        try {
+            TicTacToeApplication.replaceSceneContent("stats-window.fxml");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * Changes the Theme of the Scene
+     */
+    @FXML
+    protected void onClickChangeThemeBtn() {
+        if (theme.equals("light")) {
+            btnStart.getScene().getStylesheets().set(0, Objects.requireNonNull(TicTacToeApplication.class.getResource("style_dark.css")).toExternalForm());
+            theme = "dark";
+        }
+        else {
+            theme = "light";
+            btnStart.getScene().getStylesheets().set(0, Objects.requireNonNull(TicTacToeApplication.class.getResource("style_light.css")).toExternalForm());
+        }
+    }
+
+    /**
+     * Restarts the table to play another Game.
+     * @param from String than defines if it is the first game.
+     */
     protected void restartTable(String from) {
         for (Node node : playingTable.getChildren()) {
             Button btnCell = (Button) node;
@@ -93,11 +166,13 @@ public class TicTacToeController {
         }
     }
 
+    /**
+     * Updates the Table every time anyone make a play, and shows the differences.
+     */
     protected void updateTablero() {
         List<Node> nodes = playingTable.getChildren();
         int pos = 0;
         for (int i = 0; i < playingTable.getColumnCount(); i++) {
-            System.out.println();
             for (int j = 0; j < playingTable.getRowCount(); j++) {
                 Button btnCell = (Button) nodes.get(pos);
                 playingTableString[i][j] = btnCell.getText();
@@ -106,6 +181,9 @@ public class TicTacToeController {
         }
     }
 
+    /**
+     * Method to make the player change and detects if it is the IA or Player turn.
+     */
     protected void changePlayer() {
         if (turn.equals("X")) turn = "O";
         else turn = "X";
@@ -122,7 +200,11 @@ public class TicTacToeController {
         }
     }
 
+    /**
+     * Makes an IA move. Selects Random Grid Cell and checks if it is possible to click on it.
+     */
     protected void moveIA() {
+        //Randomize the position
         List<Node> nodes = playingTable.getChildren();
         boolean clicked;
         int randomBtnClick;
@@ -131,26 +213,14 @@ public class TicTacToeController {
         do {
             clicked = false;
             randomBtnClick = (int) (Math.random() * 9);
-            System.out.println("INICIO TIRADA");
-            System.out.println(randomBtnClick);
-            System.out.println("IA :" + IA);
-            System.out.println("TUNR IA:" + turnIA);
-            System.out.println("--------");
-
             Button btnCell = (Button) nodes.get(randomBtnClick);
-            System.out.println(btnCell.getId());
-            System.out.println(btnCell.isDisabled());
-            System.out.println(btnCell.isDisable());
             if (!btnCell.isDisabled()) {
-                System.out.println("Click");
                 btnCell.fire();
             } else {
-                System.out.println("Falso");
                 clicked = true;
             }
 
         } while (clicked);
-        //Randomize the position
 
 
     }
@@ -213,6 +283,10 @@ public class TicTacToeController {
 
     }
 
+    /**
+     * If anyone has won, this create the Stage to show and read diferents values
+     * @param player Player who has won the match.
+     */
     protected void winnerStage(String player) {
         Insets indvPadding = new Insets(10, 10, 10, 10);
         Stage winnerStage = new Stage();
@@ -252,9 +326,6 @@ public class TicTacToeController {
         Button submitBtn = new Button("Submit");
         submitBtn.setPrefWidth(60);
         submitBtn.onActionProperty().set(e -> {
-            System.out.println(playerXName.getText().trim());
-            System.out.println(playerOLabel.getText().trim());
-            System.out.println("_________________________");
             if (player.equals("X")) {
                 submitStats(playerXName.getText().trim(), "win");
                 submitStats(playerOName.getText().trim(), "lose");
@@ -299,6 +370,11 @@ public class TicTacToeController {
         restartTable("none");
     }
 
+    /**
+     * Submit stats updated into the file.
+     * @param playerName Player Code (X or O)
+     * @param stat Stats to Increment
+     */
     @FXML
     protected void submitStats(String playerName, String stat) {
         if (!Objects.equals(playerName, "")) {
@@ -329,70 +405,7 @@ public class TicTacToeController {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        } else System.out.println("None Name");
-    }
-
-
-    @FXML
-    protected void onClickCell(ActionEvent event) {
-        Button btn = (Button) event.getSource();
-        btn.setText(turn);
-        btn.setDisable(true);
-        updateTablero();
-        winnerPlayer = checkWin();
-        if (winnerPlayer != null) {
-            winnerStage(winnerPlayer);
-            playerTurnText.setText("Next Game...");
-        } else changePlayer();
-    }
-
-    /**
-     * Crea la pantalla de información sobre el programa en el menú superior dentro de Help.
-     */
-    @FXML
-    protected void onClickAboutBtnMenu() {
-        Stage stage = new Stage();
-        Label label = new Label("""
-                This is a Project of JavaFX for the class of M03.\s
-                - INS Puig Castellar -
-
-                 * Developed by Joel López *
-                \s""");
-        label.setTextAlignment(TextAlignment.CENTER);
-        ImageView imageView = new ImageView("https://elpuig.xeill.net/logo.png");
-        imageView.setPreserveRatio(true);
-        imageView.setFitWidth(250);
-
-        VBox vBox = new VBox(label, imageView);
-        vBox.setAlignment(Pos.CENTER);
-        vBox.setPadding(new Insets(10, 20, 20, 20));
-        Scene scene = new Scene(vBox);
-        stage.setScene(scene);
-        stage.setTitle("About");
-        stage.show();
-    }
-
-    @FXML
-    protected void onClickStatsBtn() {
-        try {
-            TicTacToeApplication.replaceSceneContent("stats-window.fxml");
-        } catch (Exception e) {
-            throw new RuntimeException(e);
         }
     }
 
-    String theme = "light";
-    @FXML
-    protected void onClickChangeThemeBtn() {
-        if (theme.equals("light")) {
-            System.out.println("DARK");
-            btnStart.getScene().getStylesheets().set(0, TicTacToeApplication.class.getResource("style_dark.css").toExternalForm());
-            theme = "dark";
-        }
-        else {
-            System.out.println("LIGHT");
-            theme = "light";
-            btnStart.getScene().getStylesheets().set(0, TicTacToeApplication.class.getResource("style_light.css").toExternalForm());
-        }
-    }
 }

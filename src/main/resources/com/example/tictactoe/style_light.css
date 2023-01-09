@@ -30,7 +30,12 @@
     -fx-background-image: url("dia.jpg");
 }
 
-#modeBtn{
+#modeBtns > .radio-button{
     -fx-text-fill: black;
     -fx-font-weight: bold;
+}
+
+#statsGrid > .label{
+    -fx-alignment: center;
+
 }

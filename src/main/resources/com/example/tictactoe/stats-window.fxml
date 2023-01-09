@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="400.0" maxWidth="600.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tictactoe.controller.StatsController">
    <children>
-      <GridPane fx:id="gridOfStats" layoutX="5.0" prefHeight="400.0" prefWidth="515.0">
+      <GridPane fx:id="statsGrid" layoutX="5.0" prefHeight="400.0" prefWidth="515.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

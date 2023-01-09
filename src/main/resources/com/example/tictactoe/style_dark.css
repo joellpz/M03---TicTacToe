@@ -28,7 +28,7 @@
     -fx-background-image: url("noche.jpg");
 }
 
-#modeBtn{
+#modeBtns > .radio-button{
     -fx-text-fill: white;
     -fx-font-weight: bold;
 }
