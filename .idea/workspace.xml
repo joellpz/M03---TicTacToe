@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d9b7da1f-a24d-4b68-bfa4-cfd5d39594bf" name="Changes" comment="//TO DO CSV O XML CON STATS PARA CARGARLAS EN LA TABLA">
+    <list default="true" id="d9b7da1f-a24d-4b68-bfa4-cfd5d39594bf" name="Changes" comment="CloseBTN&#10;FIN!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/controller/TicTacToeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/controller/TicTacToeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/tictactoe/main-window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/tictactoe/main-window.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/stats.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/stats.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +134,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673280299518</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="CloseBTN&#10;FIN!">
+      <created>1673880912169</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1673880912169</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -159,7 +164,8 @@
     <MESSAGE value="//TODO STATS Guardadas en stats.csv" />
     <MESSAGE value="//TO DO Cambio de CSS en directo" />
     <MESSAGE value="//TO DO CSV O XML CON STATS PARA CARGARLAS EN LA TABLA" />
-    <option name="LAST_COMMIT_MESSAGE" value="//TO DO CSV O XML CON STATS PARA CARGARLAS EN LA TABLA" />
+    <MESSAGE value="CloseBTN&#10;FIN!" />
+    <option name="LAST_COMMIT_MESSAGE" value="CloseBTN&#10;FIN!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
