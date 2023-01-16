@@ -147,6 +147,13 @@ public class TicTacToeController implements Initializable {
     }
 
     /**
+     * Close the Window
+     */
+    @FXML
+    private void onClickCloseBtn(){
+        TicTacToeApplication.principalStage.close();
+    }
+    /**
      * Restarts the table to play another Game.
      * @param from String than defines if it is the first game.
      */

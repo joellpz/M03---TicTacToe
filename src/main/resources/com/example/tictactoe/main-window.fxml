@@ -24,7 +24,7 @@
                <items>
                   <MenuItem fx:id="btnStats" mnemonicParsing="false" onAction="#onClickStatsBtn" text="Stats" />
                   <MenuItem fx:id="btnTheme" mnemonicParsing="false" onAction="#onClickChangeThemeBtn" text="Change Theme" />
-                  <MenuItem fx:id="btnClose" mnemonicParsing="false" text="Close" />
+                  <MenuItem fx:id="btnClose" mnemonicParsing="false" onAction="#onClickCloseBtn" text="Close" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Help">
